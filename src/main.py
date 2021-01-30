@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 import data_utils
 
 
@@ -21,35 +23,66 @@ def get_bounce_rate(df, ab_group):
 	return bounce_rate
 
 
+def get_metric(df, metric, ab_group):
+	'''
+	Given a dataframe, get both metrics (conversion rate and bounce rate).
+	'''
+	if metric == 'conversion':
+		return get_conversion_rate(df, ab_group)
+	elif metric == 'bounce':
+		return get_bounce_rate(df, ab_group)
+	else:
+		raise ValueError(f'unexpected metric "{metric}"')
+
+
 def get_relative_change(reference_value, other_value):
 	'''
-	Given an original control value `reference_value` and an other value `other_value`, compute the relative change.
+	Given an original control value `reference_value` and an other value `other_value`, compute the relative change, as defined by https://en.wikipedia.org/wiki/Relative_change_and_difference#Definitions.
 	'''
 	relative_change = (other_value - reference_value) / reference_value
 	return relative_change
 
 
-def main():
-	df = data_utils.load_df()
-
+def compute_stats_for_metric(df, metric):
 	# compute things
-	control_conversion_rate = get_conversion_rate(df, 'Visitors_Control')
-	variant_conversion_rate = get_conversion_rate(df, 'Visitors_Variant')
-	relative_change_conversion_rate = get_relative_change(control_conversion_rate, variant_conversion_rate)
-	#
-	control_bounce_rate = get_bounce_rate(df, 'Visitors_Control')
-	variant_bounce_rate = get_bounce_rate(df, 'Visitors_Variant')
-	relative_change_bounce_rate = get_relative_change(control_bounce_rate, variant_bounce_rate)
-
+	control_rate = get_metric(df, metric, 'Visitors_Control')
+	variant_rate = get_metric(df, metric, 'Visitors_Variant')
+	relative_change = get_relative_change(control_rate, variant_rate)
 	# output results
 	print()
-	print('Control group conversion rate:', control_conversion_rate)
-	print('Variant group conversion rate:', variant_conversion_rate)
-	print('Relative change:', relative_change_conversion_rate)
-	print()
-	print('Control group bounce rate:', control_bounce_rate)
-	print('Variant group bounce rate:', variant_bounce_rate)
-	print('Relative change:', relative_change_bounce_rate)
+	print(f'Control group {metric} rate:', control_rate)
+	print(f'Variant group {metric} rate:', variant_rate)
+	print('Relative change:', relative_change)
+
+
+def compute_stats(df):
+	for metric in ('conversion', 'bounce'):
+		compute_stats_for_metric(df, metric)
+
+
+def compute_stats_for_metric_by_date(df, metric):
+	series_daily = df.groupby('Date').apply(
+		lambda d: tuple(get_metric(d, metric, ab_group) for ab_group in ('Visitors_Control', 'Visitors_Variant'))
+	)
+	return series_daily
+
+
+def compute_stats_by_date(df):
+	# for metric in ('conversion', 'bounce'):
+	for metric in ('bounce',):
+		series = compute_stats_for_metric_by_date(df, metric)
+		x = series.index.values
+		y = [Y[0] for Y in series]
+		# plot results
+		plt.plot(x, y)
+		plt.show()
+
+
+def main():
+	df = data_utils.load_df()
+	# print(df, df.dtypes)
+	# compute_stats(df)
+	compute_stats_by_date(df)
 
 
 if __name__ == '__main__':
