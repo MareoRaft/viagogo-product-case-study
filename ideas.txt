@@ -1,0 +1,10 @@
+Try a combination of location and popularity.
+
+Use user data to get a more specific idea of what is popular for THEM.  Maybe based on age.
+
+Consider making the height of the panes smaller so that more of them appear on the screen.
+
+Look at previous purchases of an event among people of that location to see what they are buying.
+
+Consider the number of tickets you need to sell.  It makes no sense to advertise a very popular event if the tickets are already sold out.
+
