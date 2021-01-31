@@ -65,14 +65,27 @@ def compute_stats_for_metric_by_date(df, metric):
 	return series_daily
 
 
-def main():
-	df = data_utils.load_df()
-	# metric = 'bounce'
-	# series = compute_stats_for_metric_by_date(df, metric)
-	# plot.metric_graph(df, metric, series)
+def plot_metric(df, metric):
+	series = compute_stats_for_metric_by_date(df, metric)
+	plot.metric_graph(df, metric, series)
+
+
+def plot_metrics(df):
 	series1 = compute_stats_for_metric_by_date(df, 'conversion')
 	series2 = compute_stats_for_metric_by_date(df, 'bounce')
 	plot.metrics_graph(df, series1, series2)
+
+
+def main():
+	df = data_utils.load_df()
+	# Uncomment to generate the 'conversion rate' graph
+	# plot_metric(df, 'conversion')
+	# Uncomment to generate the 'bounce rate' graph
+	# plot_metric(df, 'bounce')
+	# Uncomment to generate the 'conversion/bounce comparison' graph
+	# plot_metrics(df)
+	# Uncomment to generate the stat summary data
+	compute_stats(df)
 
 
 if __name__ == '__main__':
