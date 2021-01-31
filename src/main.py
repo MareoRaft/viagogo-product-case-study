@@ -1,6 +1,5 @@
-import matplotlib.pyplot as plt
-
 import data_utils
+import plot
 
 
 def get_conversion_rate(df, ab_group):
@@ -44,12 +43,11 @@ def get_relative_change(reference_value, other_value):
 
 
 def compute_stats_for_metric(df, metric):
-	# compute things
+	# compute stats
 	control_rate = get_metric(df, metric, 'Visitors_Control')
 	variant_rate = get_metric(df, metric, 'Visitors_Variant')
 	relative_change = get_relative_change(control_rate, variant_rate)
 	# output results
-	print()
 	print(f'Control group {metric} rate:', control_rate)
 	print(f'Variant group {metric} rate:', variant_rate)
 	print('Relative change:', relative_change)
@@ -67,23 +65,16 @@ def compute_stats_for_metric_by_date(df, metric):
 	return series_daily
 
 
-def compute_stats_by_date(df):
-	# for metric in ('conversion', 'bounce'):
-	for metric in ('bounce',):
-		series = compute_stats_for_metric_by_date(df, metric)
-		x = series.index.values
-		y = [Y[0] for Y in series]
-		# plot results
-		plt.plot(x, y)
-		plt.show()
-
-
 def main():
 	df = data_utils.load_df()
-	# print(df, df.dtypes)
-	# compute_stats(df)
-	compute_stats_by_date(df)
+	# metric = 'bounce'
+	# series = compute_stats_for_metric_by_date(df, metric)
+	# plot.metric_graph(df, metric, series)
+	series1 = compute_stats_for_metric_by_date(df, 'conversion')
+	series2 = compute_stats_for_metric_by_date(df, 'bounce')
+	plot.metrics_graph(df, series1, series2)
 
 
 if __name__ == '__main__':
 	main()
+
