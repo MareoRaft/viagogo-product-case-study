@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 import data_utils
 import plot
 
@@ -85,9 +88,21 @@ def main():
 	# Uncomment to generate the 'conversion/bounce comparison' graph
 	# plot_metrics(df)
 	# Uncomment to generate the stat summary data
-	compute_stats(df)
+	# compute_stats(df)
 
 
 if __name__ == '__main__':
-	main()
+	df = data_utils.load_df()
+	series = compute_stats_for_metric_by_date(df, 'conversion')
+	x = series.index.values
+	y = [Y[0] for Y in series]
+	ys = pd.Series(y)
+	u = ys.mean()
+	s = ys.std()
+	n = len(y)
+	endpoint = u - 1.64*s/np.sqrt(n)
+	cc = (u - 0.05305) * np.sqrt(n) / s
+	print(cc)
+
+
 
