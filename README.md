@@ -34,16 +34,48 @@ we have that the 'control' strategy outperforms the 'variant' strategy every sin
 
 DISCUSS NOTABLE TRENDS IN THE METRICS
 
+You can see that there is a spike in the conversion rate on October 18th.  This probably indicates that there was a big event coming up, and users were arriving at the app already decided on buying tickets for that event.
+
 You can see from the conversion and bounce rate graphs that they are negatively correlated.  That is, when the conversion rate is high, the bounce rate is low, and vice-versa.
 
 
 MENTION any supplementary analysis
 
+
+
 ### Conclusion
 
-The results clearly show that the 'variant' strategy is worse than our current 'control' strategy.  We should revert to the control strategy.
+The results show that the 'variant' strategy is worse than our current 'control' strategy.  But is the difference statistically significant?
+
+We have two separate groups (the 'A' and 'B' groups of visitors), and we are measuring the same proportion (conversion rate) for each.  This means that we must use a Two Proportion Z-Test to determine the statistical significance.
+
+## Two Proportion Z-Test
+
+(assuming there is no overlap between A and B groups.  assuming the same person is not recorded twice)
+
+Our null hypothesis is that the conversion rate is equal for the A and B group.  Our alternative hypothesis is that the 'control' population conversion rate is greater than that of the 'variant'.  This is a right-tailed distribution.  The test statistic `z` is:
+
+    z = (p1 - p2) / sqrt(p * (1-p) * (1/n1 + 1/n2))
+
+where
+
+p1 = 0.05558219919855477
+p2 = 0.05305114856166729
+p = 0.05430630284714648
+n1 = 2996337
+n2 = 3045853
+
+so that
+
+   z = 13.726287068516598
+
+so that the p-value is less than 0.00001 (due to our very high n), and thus the result IS statistically significant!  We should therefore revert to the control strategy.
+
+
 
 IS THERE more data you would like to consider before deciding?
+
+
 
 
 

@@ -9,10 +9,13 @@ def get_conversion_rate(df, ab_group):
 	'''
 	Looking at people from a specific AB Group, compute the conversion rate, that is, the number of visitors to the home page who make a purchase, divided by the total number of visitors to the home page.
 	'''
-	num_visitors = df[ab_group].sum()
-	num_purchase_visitors = df[df['Purchase'] == 1][ab_group].sum()
+	# Change the following line if you want to restrict the data to a certain subset
+	df_ = df
+	# df_ = df[df['User Type'] == 'New User']
+	num_visitors = df_[ab_group].sum()
+	num_purchase_visitors = df_[df_['Purchase'] == 1][ab_group].sum()
 	conversion_rate = num_purchase_visitors / num_visitors
-	return conversion_rate
+	return num_visitors, num_purchase_visitors, conversion_rate
 
 
 def get_bounce_rate(df, ab_group):
@@ -47,17 +50,33 @@ def get_relative_change(reference_value, other_value):
 
 def compute_stats_for_metric(df, metric):
 	# compute stats
-	control_rate = get_metric(df, metric, 'Visitors_Control')
-	variant_rate = get_metric(df, metric, 'Visitors_Variant')
-	relative_change = get_relative_change(control_rate, variant_rate)
+	a_total, a_positive, a_rate = get_metric(df, metric, 'Visitors_Control')
+	b_total, b_positive, b_rate = get_metric(df, metric, 'Visitors_Variant')
+	total = a_total + b_total
+	positive = a_positive + b_positive
+	rate = positive / total
+	# relative_change = get_relative_change(a_rate, b_rate)
+	# two-proportion z-test stats
+	p1 = a_rate
+	p2 = b_rate
+	p = rate
+	n1 = a_total
+	n2 = b_total
+	z = (p1 - p2) / np.sqrt(p * (1-p) * (1/n1 + 1/n2))
 	# output results
-	print(f'Control group {metric} rate:', control_rate)
-	print(f'Variant group {metric} rate:', variant_rate)
-	print('Relative change:', relative_change)
+	print(f'  Control group {metric} rate, num positive, total:', a_rate, a_positive, a_total)
+	print(f'  Variant group {metric} rate, num positive, total:', b_rate, b_positive, b_total)
+	print(f'Combined groups {metric} rate, num positive, total:', rate, positive, total)
+	# print('Relative change:', relative_change)
+	print(f'2-proportion z-stat for {metric}:', z)
+
+
+
 
 
 def compute_stats(df):
-	for metric in ('conversion', 'bounce'):
+	# for metric in ('conversion', 'bounce'):
+	for metric in ('conversion',):
 		compute_stats_for_metric(df, metric)
 
 
@@ -88,21 +107,22 @@ def main():
 	# Uncomment to generate the 'conversion/bounce comparison' graph
 	# plot_metrics(df)
 	# Uncomment to generate the stat summary data
-	# compute_stats(df)
+	compute_stats(df)
 
 
 if __name__ == '__main__':
-	df = data_utils.load_df()
-	series = compute_stats_for_metric_by_date(df, 'conversion')
-	x = series.index.values
-	y = [Y[0] for Y in series]
-	ys = pd.Series(y)
-	u = ys.mean()
-	s = ys.std()
-	n = len(y)
-	endpoint = u - 1.64*s/np.sqrt(n)
-	cc = (u - 0.05305) * np.sqrt(n) / s
-	print(cc)
+	main()
+	# df = data_utils.load_df()
+	# series = compute_stats_for_metric_by_date(df, 'conversion')
+	# x = series.index.values
+	# y = [Y[0] for Y in series]
+	# ys = pd.Series(y)
+	# u = ys.mean()
+	# s = ys.std()
+	# n = len(y)
+	# endpoint = u - 1.64*s/np.sqrt(n)
+	# cc = (u - 0.05305) * np.sqrt(n) / s
+	# print(cc)
 
 
 
