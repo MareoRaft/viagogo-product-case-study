@@ -57,7 +57,7 @@ From the periodic behavior we can see that the highest conversion rate occurs on
 
 The results show that the **variant** strategy is worse than our current **control** strategy.  But is the difference statistically significant?
 
-We have two separate groups (the 'A' and 'B' groups of visitors), and we are measuring the same proportion (conversion rate) for each.  This means that we must use a Two Proportion Z-Test to determine the statistical significance.
+We have two separate groups (the "A" and "B" groups of visitors), and we are measuring the same proportion (conversion rate) for each.  This means that we must use a Two Proportion Z-Test to determine the statistical significance.
 
 ## Two Proportion Z-Test
 
@@ -79,10 +79,9 @@ so that
 
     z = 13.726287068516598
 
-so that the p-value is less than 0.00001 (due to our very high n), and thus the result IS statistically significant!  We should therefore revert to the control strategy.
+so that the p-value is less than `0.00001` (mainly due to our very high `n`), and thus the result IS statistically significant!  We should therefore revert to the control strategy.
 
 
-IS THERE more data you would like to consider before deciding?
 
 
 

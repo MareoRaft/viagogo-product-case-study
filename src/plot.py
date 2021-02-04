@@ -11,36 +11,24 @@ COLORS = {
 }
 
 
-def metrics_graph(df, series1, series2):
+def metrics_graph(df, x, ys):
 	'''
 	Generate graph showing BOTH metrics combined, control group only.
 	'''
-	metric_to_series = {
-		'conversion': series1,
-		'bounce': series2,
-	}
-	for metric in ('bounce', 'conversion'):
-		series = metric_to_series[metric]
-		x = series.index.values
-		y = [Y[0] for Y in series]
+	for i,metric in enumerate(['conversion', 'bounce']):
 		# plot results
-		# plt.plot(x, y)
-		# line, = plt.plot_date(x, y, linestyle='solid', color=metric_to_color[metric])
-		line, = plt.plot_date(x, y, linestyle='solid',)
-		# make date labels diagonal
-		# plt.gcf().autofmt_xdate()
+		line, = plt.plot_date(x, ys[i], linestyle='solid')
 		# format date strings
 		date_format = mpl_dates.DateFormatter('%d')
 		axes = plt.gca()
 		xaxis = axes.xaxis
 		xaxis.set_major_formatter(date_format)
-		# xaxis.set_major_locator(matplotlib.ticker.Locator())
 		axes.set_xticks(x)
 		# make label for legend
 		line.set_label(f'{metric} rate')
 	# label things
-	plt.title(f'User metrics during October, 2014')
-	plt.xlabel('Date (in October, 2014)')
+	plt.title(f'User metrics')
+	plt.xlabel('Date')
 	plt.ylabel(f'Metric Rate')
 	# add the legend
 	plt.legend()
@@ -72,8 +60,8 @@ def metric_graph(df, metric, series):
 		# make label for legend
 		line.set_label(f'{ab_group} group')
 	# label things
-	plt.title(f'User {metric.capitalize()} Rate during October, 2014')
-	plt.xlabel('Date (in October, 2014)')
+	plt.title(f'User {metric.capitalize()} Rate')
+	plt.xlabel('Date')
 	plt.ylabel(f'{metric.capitalize()} Rate')
 	# add the legend
 	plt.legend()

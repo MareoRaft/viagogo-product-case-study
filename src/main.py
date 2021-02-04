@@ -26,7 +26,7 @@ def get_bounce_rate(df, ab_group):
 	num_land_visitors = df[df['Land'] == 1][ab_group].sum()
 	num_bounce_visitors = df[df['Bounce'] == 1][ab_group].sum()
 	bounce_rate = num_bounce_visitors / num_land_visitors
-	return bounce_rate
+	return num_land_visitors, num_bounce_visitors, bounce_rate
 
 
 def get_metric(df, metric, ab_group):
@@ -96,7 +96,10 @@ def plot_metric(df, metric):
 def plot_metrics(df):
 	series1 = compute_stats_for_metric_by_date(df, 'conversion')
 	series2 = compute_stats_for_metric_by_date(df, 'bounce')
-	plot.metrics_graph(df, series1, series2)
+	x = series1.index.values
+	y1 = [Y[0][2] for Y in series1]
+	y2 = [Y[0][2] for Y in series2]
+	plot.metrics_graph(df, x, [y1, y2])
 
 
 def plot_time_series_analysis(df, metric):
@@ -116,7 +119,7 @@ def main():
 	# Uncomment to generate the 'bounce rate' graph
 	# plot_metric(df, 'bounce')
 	# Uncomment to generate the 'conversion/bounce comparison' graph
-	# plot_metrics(df)
+	plot_metrics(df)
 	# Uncomment to generate the stat summary data
 	# compute_stats(df)
 	# Uncomment to plot time series analysis trend graph
