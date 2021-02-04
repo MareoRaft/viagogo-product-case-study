@@ -31,7 +31,7 @@ The **control** strategy outperforms the **variant** strategy every day except f
 
 We compare our strategies again, this time using the _bounce rate_:
 
-![](img/conversion-rate.png)
+![](img/bounce-rate.png)
 
 The **control** strategy outperforms the **variant** strategy every single day.  Looking at the total for the entire month, the bounce rate for the control is `39.7%` while for the variant it is `41.2%`.  Switching our app to the variant strategy could increase visitors abandoning our website by `4.0%` (relative change).
 
