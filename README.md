@@ -106,7 +106,7 @@ All of the following improvement ideas could be tested with an AB test similar t
 
 #### 1.
 
-Try a strategy that combines location and popularity.  For example, location gets a point value between `0` and `1`, and popularity gets a point value between `0` and `1`.  The sum of these point values is the total point value for a category.  For simplicity let's say that a category has a single location (but in reality we can do these computations on a per-event basis and figure out what to do w/ the categories from that).
+Try a strategy that _combines_ location and popularity.  For example, location gets a point value between `0` and `1`, and popularity gets a point value between `0` and `1`.  The sum of these point values is the total point value for a category.  For simplicity let's say that a category has a single location (but in reality we can do these computations on a per-event basis and figure out what to do w/ the categories from that).
 
 Let `MD` be the maximum distance (in minutes, by google maps drive time estimate) across all categories.
 
@@ -137,9 +137,9 @@ Any ML algorithm that fits the data well could do.  It could be logistic regress
 
 #### 3.
 
-Use the user's social connections to predict what they will buy.  If users give Facebook and/or similar products access to their viagogo accounts, then we can examine their social network to see what their friends are buying.
+Use the user's _social connections_ to predict what they will buy.  If users give Facebook and/or similar products access to their viagogo accounts, then we can examine their social network to see what their friends are buying.
 
-Consider the network of people.  A pair of people are connected by an edge if the two people are "friends".  Consider user `U`.  Any person ``P`` in the network has a "shortest path" distance to user `U`, which is the smallest number of edges you need to traverse to get from `P` to `U`.  This is also commonly referred to as the "Erdős number" or recently in popular culture the "Kevin Bacon number".  Every time somebody buys a ticket, and that person has a shortest distance of `d` to `U`, then the point value `1/d` can be assigned to that purchase.  For each distinct category, we sum up the point values of all purchases within that category, arriving at a category-level point value.
+Consider the network of people.  A pair of people are connected by an edge if the two people are "friends".  Consider user `U`.  Any person ``P`` in the network has a "shortest path" distance to user `U`, which is the smallest number of edges you need to traverse to get from `P` to `U`.  This concept is also commonly referred to as the "Erdős number" or recently in popular culture the "**Kevin Bacon number**".  Every time somebody buys a ticket, and that person has a shortest distance of `d` to `U`, then the point value `1/d` can be assigned to that purchase.  For each distinct category, we sum up the point values of all purchases within that category, arriving at a category-level point value.
 
 Finally, we compare the categories and take the top 10.
 
@@ -149,7 +149,7 @@ Finally, we compare the categories and take the top 10.
 
 #### 4.
 
-Consider making the height of the panes smaller so that more of them appear on the screen.
+Consider making the height of the panes smaller so that _more of them appear on the screen_.
 
 Perhaps users are lazy and don't scroll down, and so perhaps they only see the top 3 or so categories, even though there are 10.  It is possible, then, that increasing the number of categories they see on the home screen without scrolling would increase our conversion rate.  We would simply reduce the height of each pane, and/or put two columns of panes instead of one, in order to show more categories on a single screen.
 
