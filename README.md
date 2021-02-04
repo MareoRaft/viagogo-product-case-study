@@ -2,6 +2,8 @@
 
 ## Part I
 
+<br>
+
 ### Experiment
 
 Our app's home page features 10 event categories to our users.  Which 10 categories we pick has an impact on how many users ultimately buy tickets.
@@ -57,11 +59,13 @@ From the periodic behavior we can see that the highest conversion rate occurs on
 
 The results show that the **variant** strategy is worse than our current **control** strategy.  But is the difference statistically significant?
 
-We have two separate groups (the "A" and "B" groups of visitors), and we are measuring the same proportion (conversion rate) for each.  This means that we must use a Two Proportion Z-Test to determine the statistical significance.
+We have two separate groups (the "A" and "B" groups of visitors), and we are measuring the same proportion (conversion rate) for each.  This means that we must use a _Two Proportion Z-Test_ to determine the statistical significance.
 
-## Two Proportion Z-Test
+<br>
 
-(assuming there is no overlap between A and B groups.  assuming the same person is not recorded twice)
+### Two Proportion Z-Test
+
+The Two Proportion Z-Test requires that there is no overlap between the A and B groups.  I restricted the z-test data to "New User"s only to prevent double-counting of users.
 
 Our null hypothesis is that the conversion rate is equal for the A and B group.  Our alternative hypothesis is that the **control** population conversion rate is greater than that of the **variant**.  This is a right-tailed distribution.  The test statistic `z` is:
 
@@ -69,29 +73,23 @@ Our null hypothesis is that the conversion rate is equal for the A and B group. 
 
 where
 
-    p1 = 0.05558219919855477
-    p2 = 0.05305114856166729
-    p = 0.05430630284714648
-    n1 = 2996337
-    n2 = 3045853
+    p1 = 0.0528466624522219  # conversion rate for the control
+    p2 = 0.0511905739612249  # conversion rate for the variant
+    p  = 0.0520074951962051  # conversion rate for both combined
+    n1 = 1778012             # number of people in control group
+    n2 = 1826430             # number of people in variant group
 
 so that
 
-    z = 13.726287068516598
+    z = 7.079424549201197
 
-so that the p-value is less than `0.00001` (mainly due to our very high `n`), and thus the result IS statistically significant!  We should therefore revert to the control strategy.
-
-
+so that the p-value is less than `0.00001` (mainly due to our very high `n1` and `n2`), and thus the result IS statistically significant!  We should therefore revert to the control strategy.
 
 
 
 
-
-
-
-
-
-
+<br>
+<br>
 
 ---
 

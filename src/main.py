@@ -11,8 +11,8 @@ def get_conversion_rate(df, ab_group):
 	Looking at people from a specific AB Group, compute the conversion rate, that is, the number of visitors to the home page who make a purchase, divided by the total number of visitors to the home page.
 	'''
 	# Change the following line if you want to restrict the data to a certain subset
-	df_ = df
-	# df_ = df[df['User Type'] == 'New User']
+	# df_ = df
+	df_ = df[df['User Type'] == 'New User']
 	num_visitors = df_[ab_group].sum()
 	num_purchase_visitors = df_[df_['Purchase'] == 1][ab_group].sum()
 	conversion_rate = num_purchase_visitors / num_visitors
@@ -119,9 +119,9 @@ def main():
 	# Uncomment to generate the 'conversion/bounce comparison' graph
 	# plot_metrics(df)
 	# Uncomment to generate the stat summary data
-	# compute_stats(df)
+	compute_stats(df)
 	# Uncomment to plot time series analysis trend graph
-	plot_time_series_analysis(df, 'conversion')
+	# plot_time_series_analysis(df, 'conversion')
 
 
 if __name__ == '__main__':
