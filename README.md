@@ -102,7 +102,7 @@ so that the p-value is less than `0.00001` (mainly due to our very high `n1` and
 
 All of the following improvement ideas could be tested with an AB test similar to the one we just conducted.
 
-
+<br>
 
 #### 1.
 
@@ -121,9 +121,11 @@ Let t be the number of tickets sold of the category.
 Then t/MT can be the popularity point value.
 
 
+<br>
 
+#### 2.
 
-  2. Use user data to get a more specific idea of what is popular for THEM.  We can use machine learning to build a predictive algorithm to see which categories they are most likely to buy tickets from, and then use the top 10 categories on the user's home page.
+Use user data to get a more specific idea of what is popular for THEM.  We can use machine learning to build a predictive algorithm to see which categories they are most likely to buy tickets from, and then use the top 10 categories on the user's home page.
 
 The algo could potentially take in input data such as location, age, gender, education, interests, ethnicity, and output probabilities of buying tickets in each category.
 
@@ -131,7 +133,11 @@ Any ML algorithm that fits the data well could do.  It could be logistic regress
 
 
 
-  3. Use the user's social connections to predict what they will buy.  If users give Facebook and/or similar products access to their viagogo accounts, then we can examine their social network to see what their friends are buying.
+<br>
+
+#### 3.
+
+Use the user's social connections to predict what they will buy.  If users give Facebook and/or similar products access to their viagogo accounts, then we can examine their social network to see what their friends are buying.
 
 Consider the network of people.  A pair of people are connected by an edge if the two people are "friends".  Consider user U.  Any person P in the network has a "shortest path" distance to user U, which is the smallest number of edges you need to traverse to get from P to U.  This is also commonly referred to as the "Erdős number" or recently in popular culture the "Kevin Bacon number".  Every time somebody buys a ticket, and that person has a shortest distance of d to U, then the point value 1/d can be assigned to that purchase.  For each distinct category, we sum up the point values of all purchases within that category, arriving at a category-level point value.
 
@@ -139,28 +145,31 @@ Finally, we compare the categories and take the top 10.
 
 
 
-  4. Consider making the height of the panes smaller so that more of them appear on the screen.
+<br>
+
+#### 4.
+
+Consider making the height of the panes smaller so that more of them appear on the screen.
 
 Perhaps users are lazy and don't scroll down, and so perhaps they only see the top 3 or so categories, even though there are 10.  It is possible, then, that increasing the number of categories they see on the home screen without scrolling would increase our conversion rate.  We would simply reduce the height of each pane, and/or put two columns of panes instead of one, in order to show more categories on a single screen.
 
 
 
-  5. Consider changing the number of categories that appear on the home page.  For example, 7 instead of 10.  We could test a bunch of values like [1, 2, 3, 4, 6, 8, 12, 16] and see if they fare better than 10 or not.
+<br>
+
+#### 5.
+
+Consider changing the number of categories that appear on the home page.  For example, 7 instead of 10.  We could test a bunch of values like [1, 2, 3, 4, 6, 8, 12, 16] and see if they fare better than 10 or not.
+
+or maybe
+
+<br>
+
+#### 6.
+
+Consider the number of tickets you need to sell.  It makes no sense to advertise a very popular event if the tickets are already sold out.
 
 
-
-
-  * Look at previous purchases of an event among people of that location to see what they are buying.
-  * Consider the number of tickets you need to sell.  It makes no sense to advertise a very popular event if the tickets are already sold out.
-
-
-
-
-
-
-
-  2. What additional data would you like to know to help you assess which idea to prioritize?
-  3. How would you measure the success or failure of each of these chang
 
 
 
