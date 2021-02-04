@@ -96,7 +96,7 @@ so that the p-value is less than `0.00001` (mainly due to our very high `n1` and
 
 ## Part II
 
-
+<br>
 
 ### Improvement ideas
 
