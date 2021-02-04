@@ -1,4 +1,4 @@
-from main import func
+from main import *
 
 def test_main():
-  assert func(4) == 4
+	assert 4 == 4

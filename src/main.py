@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 
 import data_utils
+import time_series_analysis
 import plot
 
 
@@ -98,6 +99,16 @@ def plot_metrics(df):
 	plot.metrics_graph(df, series1, series2)
 
 
+def plot_time_series_analysis(df, metric):
+	series = compute_stats_for_metric_by_date(df, metric)
+	print(series)
+	x = series.index.values
+	y = np.array([Y[0][2] for Y in series])
+	print(np.shape(y))
+	outlier, trend, periodic, noise = time_series_analysis.get_analysis(y)
+	plot.graph(df, metric, x, [outlier, trend, periodic, noise])
+
+
 def main():
 	df = data_utils.load_df()
 	# Uncomment to generate the 'conversion rate' graph
@@ -107,22 +118,11 @@ def main():
 	# Uncomment to generate the 'conversion/bounce comparison' graph
 	# plot_metrics(df)
 	# Uncomment to generate the stat summary data
-	compute_stats(df)
+	# compute_stats(df)
+	# Uncomment to plot time series analysis trend graph
+	# plot_time_series_analysis(df, 'conversion')
 
 
 if __name__ == '__main__':
 	main()
-	# df = data_utils.load_df()
-	# series = compute_stats_for_metric_by_date(df, 'conversion')
-	# x = series.index.values
-	# y = [Y[0] for Y in series]
-	# ys = pd.Series(y)
-	# u = ys.mean()
-	# s = ys.std()
-	# n = len(y)
-	# endpoint = u - 1.64*s/np.sqrt(n)
-	# cc = (u - 0.05305) * np.sqrt(n) / s
-	# print(cc)
-
-
 
