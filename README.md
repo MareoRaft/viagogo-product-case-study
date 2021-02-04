@@ -8,7 +8,7 @@ Our app's home page features 10 event categories to our users.  Which 10 categor
 
 We performed an AB test to compare two category-picking strategies:
 
-  * Strategy A: 'control' -- display the 10 most popular categories.  This is the current behavior of our app.
+  * Strategy A: **control** -- display the 10 most popular categories.  This is the current behavior of our app.
   * Startegy B: 'variant' -- display the 10 categories nearest to the user's location with events this week.
 
 We are using two metrics to quantify the efficacy of a strategy:
