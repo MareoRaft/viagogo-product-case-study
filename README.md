@@ -104,7 +104,9 @@ All of the following improvement ideas could be tested with an AB test similar t
 
 
 
-  1. Try a strategy that combines location and popularity.  For example, location gets a point value between 0 and 1, and popularity gets a point value between 0 and 1.  The sum of these point values is the total point value for a category.  For simplicity let's say that a category has a single location (but in reality we can do these computations on a per-event basis and figure out what to do w/ the categories from that).
+#### 1.
+
+Try a strategy that combines location and popularity.  For example, location gets a point value between 0 and 1, and popularity gets a point value between 0 and 1.  The sum of these point values is the total point value for a category.  For simplicity let's say that a category has a single location (but in reality we can do these computations on a per-event basis and figure out what to do w/ the categories from that).
 
 Let MD be the maximum distance (in minutes, by google maps drive time estimate) across all categories.
 
@@ -162,7 +164,8 @@ Perhaps users are lazy and don't scroll down, and so perhaps they only see the t
 
 
 
----
+<br>
+<br>
 
 ## Developer README notes
 
