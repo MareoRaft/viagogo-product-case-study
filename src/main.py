@@ -104,12 +104,10 @@ def plot_metrics(df):
 
 def plot_time_series_analysis(df, metric):
 	series = compute_stats_for_metric_by_date(df, metric)
-	print(series)
 	x = series.index.values
 	y = np.array([Y[0][2] for Y in series])
-	print(np.shape(y))
 	outlier, trend, periodic, noise = time_series_analysis.get_analysis(y)
-	plot.graph(df, metric, x, [outlier, trend, periodic, noise])
+	plot.time_series_breakdown_graph(df, metric, x, [outlier, trend, periodic, noise])
 
 
 def main():
@@ -119,11 +117,11 @@ def main():
 	# Uncomment to generate the 'bounce rate' graph
 	# plot_metric(df, 'bounce')
 	# Uncomment to generate the 'conversion/bounce comparison' graph
-	plot_metrics(df)
+	# plot_metrics(df)
 	# Uncomment to generate the stat summary data
 	# compute_stats(df)
 	# Uncomment to plot time series analysis trend graph
-	# plot_time_series_analysis(df, 'conversion')
+	plot_time_series_analysis(df, 'conversion')
 
 
 if __name__ == '__main__':

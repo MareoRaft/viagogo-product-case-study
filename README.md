@@ -43,7 +43,7 @@ You can see from the conversion and bounce rate graphs that they are negatively 
 
 There is a spike in the conversion rate on October 18th.  This may indicate that there was a big event coming up, and users were arriving at the app having already decided to buy tickets.
 
-The following time series analysis breaks up the conversion rate into the sum of 4 separate components: The October 18th outlier, the rolling average trend, weekly periodic behavior, and noise:
+The following time series analysis breaks up the conversion rate into the _sum of 4 separate components_: The October 18th outlier, the rolling average trend, the weekly periodic behavior, and the remaining noise:
 
 ![](img/time-series-analysis.png)
 

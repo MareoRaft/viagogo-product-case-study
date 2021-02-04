@@ -69,7 +69,7 @@ def metric_graph(df, metric, series):
 	plt.show()
 
 
-def graph(df, metric, x, ys):
+def time_series_breakdown_graph(df, metric, x, ys):
 	'''
 	Generate graph for a SINGLE metric, showing BOTH control and variant groups.
 	  * `series` -- data in form of Pandas Series
@@ -95,7 +95,7 @@ def graph(df, metric, x, ys):
 	axes.set_xticks(x)
 	# label things
 	axeses[0].set(title=f'{metric.capitalize()} Rate time series analysis breakdown')
-	plt.xlabel('Date (in October, 2014)')
+	plt.xlabel('Date')
 	# finally, print the graph
 	plt.show()
 
