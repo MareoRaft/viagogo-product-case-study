@@ -19,19 +19,20 @@ We are using two metrics to quantify the efficacy of a strategy:
 
 So ideally we want a high conversion rate and a low bounce rate.
 
+<br>
 ### Results
 
-Comparing the 'control' and 'variant' strategies using the conversion rate,
+We compare the **control** and **variant** strategies using the conversion rate:
 
 ![](img/conversion-rate.png)
 
-we have that the 'control' strategy outperforms the 'variant' strategy every day except for October 18th.  Looking at the total for the entire month, the conversion rate for the control is 5.6% while for the variant it is 5.3%.  Switching our app to the variant strategy could decrease ticket purchases by about 4.6%.
+The **control** strategy outperforms the **variant** strategy every day except for October 18th.  Looking at the total for the entire month, the conversion rate for the control is `5.6%` while for the variant it is `5.3%`.  Switching our app to the variant strategy could decrease ticket purchases by about `4.6%` (relative change).
 
 Comparing our strategies using the bounce rate,
 
 ![](img/conversion-rate.png)
 
-we have that the 'control' strategy outperforms the 'variant' strategy every single day.  Looking at the total for the entire month, the bounce rate for the control is 39.7% while for the variant it is 41.2%.  Switching our app to the variant strategy could increase visitors abandoning our website by 4.0% (relative change).
+we have that the **control** strategy outperforms the **variant** strategy every single day.  Looking at the total for the entire month, the bounce rate for the control is 39.7% while for the variant it is 41.2%.  Switching our app to the variant strategy could increase visitors abandoning our website by 4.0% (relative change).
 
 You can see from the conversion and bounce rate graphs that they are negatively correlated.  That is, when the conversion rate is high, the bounce rate is low, and vice-versa.
 
@@ -49,7 +50,7 @@ From the periodic behavior we can see that the highest conversion rate occurs on
 
 ### Conclusion
 
-The results show that the 'variant' strategy is worse than our current 'control' strategy.  But is the difference statistically significant?
+The results show that the **variant** strategy is worse than our current **control** strategy.  But is the difference statistically significant?
 
 We have two separate groups (the 'A' and 'B' groups of visitors), and we are measuring the same proportion (conversion rate) for each.  This means that we must use a Two Proportion Z-Test to determine the statistical significance.
 
@@ -57,7 +58,7 @@ We have two separate groups (the 'A' and 'B' groups of visitors), and we are mea
 
 (assuming there is no overlap between A and B groups.  assuming the same person is not recorded twice)
 
-Our null hypothesis is that the conversion rate is equal for the A and B group.  Our alternative hypothesis is that the 'control' population conversion rate is greater than that of the 'variant'.  This is a right-tailed distribution.  The test statistic `z` is:
+Our null hypothesis is that the conversion rate is equal for the A and B group.  Our alternative hypothesis is that the **control** population conversion rate is greater than that of the **variant**.  This is a right-tailed distribution.  The test statistic `z` is:
 
     z = (p1 - p2) / sqrt(p * (1-p) * (1/n1 + 1/n2))
 
