@@ -47,9 +47,11 @@ The following time series analysis breaks up the conversion rate into the sum of
 
 ![](img/time-series-analysis.png)
 
-You can see that the trend is relatively constant, increasing slightly over the course of the month.
+The trend is relatively constant, increasing slightly over the course of the month.
 
-From the periodic behavior we can see that the highest conversion rate occurs on Sundays while the lowest occurs on Wednesdays.
+From the periodic behavior we can see that the highest conversion rate occurs on _Sundays_ while the lowest occurs on _Wednesdays_.
+
+<br>
 
 ### Conclusion
 
