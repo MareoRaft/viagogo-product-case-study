@@ -20,6 +20,7 @@ We are using two metrics to quantify the efficacy of a strategy:
 So ideally we want a high conversion rate and a low bounce rate.
 
 <br>
+
 ### Results
 
 We compare the **control** and **variant** strategies using the conversion rate:
@@ -28,19 +29,21 @@ We compare the **control** and **variant** strategies using the conversion rate:
 
 The **control** strategy outperforms the **variant** strategy every day except for October 18th.  Looking at the total for the entire month, the conversion rate for the control is `5.6%` while for the variant it is `5.3%`.  Switching our app to the variant strategy could decrease ticket purchases by about `4.6%` (relative change).
 
-Comparing our strategies using the bounce rate,
+We compare our strategies again, this time using the _bounce rate_:
 
 ![](img/conversion-rate.png)
 
-we have that the **control** strategy outperforms the **variant** strategy every single day.  Looking at the total for the entire month, the bounce rate for the control is 39.7% while for the variant it is 41.2%.  Switching our app to the variant strategy could increase visitors abandoning our website by 4.0% (relative change).
+The **control** strategy outperforms the **variant** strategy every single day.  Looking at the total for the entire month, the bounce rate for the control is `39.7%` while for the variant it is `41.2%`.  Switching our app to the variant strategy could increase visitors abandoning our website by `4.0%` (relative change).
+
+<br>
 
 You can see from the conversion and bounce rate graphs that they are negatively correlated.  That is, when the conversion rate is high, the bounce rate is low, and vice-versa.
 
 ![](img/metrics-combined.png)
 
-You can see that there is a spike in the conversion rate on October 18th.  This probably indicates that there was a big event coming up, and users were arriving at the app already decided on buying tickets for that event.
+There is a spike in the conversion rate on October 18th.  This may indicate that there was a big event coming up, and users were arriving at the app having already decided to buy tickets.
 
-The following time series analysis breaks up the conversion rate into the sum of 4 separate components: The October 18th outlier, the rolling average trend, weekly periodic behavior, and noise.
+The following time series analysis breaks up the conversion rate into the sum of 4 separate components: The October 18th outlier, the rolling average trend, weekly periodic behavior, and noise:
 
 ![](img/time-series-analysis.png)
 
