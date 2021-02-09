@@ -110,6 +110,14 @@ def plot_time_series_analysis(df, metric):
 	plot.time_series_breakdown_graph(df, metric, x, [outlier, trend, periodic, noise])
 
 
+def get_durbin_watson_stat(df, metric):
+	series = compute_stats_for_metric_by_date(df, metric)
+	x = series.index.values
+	y = np.array([Y[0][2] for Y in series])
+	dw = time_series_analysis.get_durbin_watson(y)
+	print('DW stat:', dw)
+
+
 def main():
 	df = data_utils.load_df()
 	# Uncomment to generate the 'conversion rate' graph
@@ -119,9 +127,11 @@ def main():
 	# Uncomment to generate the 'conversion/bounce comparison' graph
 	# plot_metrics(df)
 	# Uncomment to generate the stat summary data
-	compute_stats(df)
+	# compute_stats(df)
 	# Uncomment to plot time series analysis trend graph
 	# plot_time_series_analysis(df, 'conversion')
+	# Uncomment to get time series analysis Durbin Watson autocorrelation stat
+	get_durbin_watson_stat(df, 'conversion')
 
 
 if __name__ == '__main__':

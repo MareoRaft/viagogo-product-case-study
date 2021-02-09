@@ -88,6 +88,17 @@ so that
 
 so that the p-value is less than `0.00001` (mainly due to our very high `n1` and `n2`), and thus the result IS statistically significant!  We should therefore revert to the control strategy.
 
+<br>
+
+### Durbin Watson autocorrelation statistic
+
+The Durbin Watson statistic measures autocorrelation.  To use this statistic, we must have that the **mean**, **variance**, and **autocorrelation** of the data is constant across time.  We make the mean constant by subtracting the trend line from the data.  I need to look into the variance and autocorrelation info more closely.  DW stat:
+
+    dw = 2.33
+
+A DW stat of `2` means no autocorrelation.  `dw < 2` means positive autocorrelation and `dw > 2` means negative autocorrelation.  So we have a negative autocorrelation, which makes sense in our situation.
+
+
 
 
 

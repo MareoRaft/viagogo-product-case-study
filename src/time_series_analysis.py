@@ -4,6 +4,7 @@ This file contains functions for performing a time series analysis.
 import math
 
 import numpy as np
+from statsmodels.stats.stattools import durbin_watson
 
 def get_trend(y, spread_radius):
 	'''
@@ -65,4 +66,23 @@ def get_analysis(y):
 	noise = y
 	# return
 	return outlier, trend, periodic, noise
+
+def get_durbin_watson(y):
+	'''
+	Compute the Durbin Watson test stat for our data.
+	'''
+	# 1. take outlier (day 18, index 8)
+	outlier = get_outlier(y, 8)
+	y = y - outlier
+	# 2. take trend (averaging over 7 = 3+1+3 days)
+	trend = get_trend(y, 3)
+	y = y - trend
+	# at this point, the mean is constant over time, but i don't know about the variance or autocorrelation
+	# assuming they are, we can use this y to calculate Durbin Watson
+	y_stationary = y
+	# calculate the Durbin Watson autocorrelation statistic
+	dw = durbin_watson(y_stationary)
+	# return
+	return dw
+
 
