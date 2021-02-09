@@ -180,6 +180,13 @@ Note that all of the data is from October.  It would be nice to see data from th
 Many of the aforementioned strategies could be measured against past purchase data, in the same way that stock investment strategies are tested against old market data in order to see how effective they might be.
 
 
+<br>
+
+### More things to investigate
+
+Does the variant group beat the control group if the data is restricted to a certain subgroup of users?  For example if I **only** look at "Social Media" channel users, or only "Direct" channel users, could the variant group be better for _them_?
+
+
 
 <br>
 <br>
