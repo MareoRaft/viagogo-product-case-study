@@ -171,6 +171,14 @@ Consider the number of tickets you need to sell.  It makes no sense to advertise
 
 
 
+<br>
+
+### Additional Data?
+
+Note that all of the data is from October.  It would be nice to see data from the whole year round, or even multiple years.  It would be nice to see how many tickets a user has previously purchases, in order to assess how much of a "veteran" user they are.  We may find that novice users behave differently than veterans.
+
+Many of the aforementioned strategies could be measured against past purchase data, in the same way that stock investment strategies are tested against old market data in order to see how effective they might be.
+
 
 
 <br>
